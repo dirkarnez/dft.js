@@ -24,7 +24,7 @@ export const DFT = (array, sampleRate) => {
     return DFT_Equation(array)
     .slice(0, kCount)
     .map((complexNumber, k) => {
-        const amplitude = complexNumber.multiplyWithScalar(2).amplitude() / sampleRate;
+        const amplitude = complexNumber.multiplyWithScalar(2).amplitude() / array.length;
         const hz = k * (sampleRate / array.length);
         console.log(`k = ${k}, freq = ${hz}Hz, amplitude = ${amplitude}, Rectangular Form: ${complexNumber.toString()}, Polar Form: ${complexNumber.convertToPolarForm()}`);
         return { amplitude, hz };
