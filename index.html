@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- window.Algebrite -->
+    <script src="./algebrite.bundle-for-browser.js"></script>
 </head>
 <body>
     <a href="https://github.com/dirkarnez/dft.js" target="_blank">dirkarnez/dft.js</a><br>
     <div id="here"></div>
     <script type="module">
-        import { DFT } from "./esm/dft.js";
+        import { DFT, getCommonW } from "./esm/dft.js";
+
+        getCommonW();
 
         const my_dft_eie3312 = DFT([1,2,2,0], 1000);
 

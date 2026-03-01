@@ -32,7 +32,7 @@ export const DFT = (array, sampleRate) => {
 }
 
 export const W2 = (nk, bigN) => {
-    
+    return `${Algebrite.run(`exp(-2* i * pi * ${nk}/${bigN})`)}`;
 };
 
 export const W3 = (n, k, bigN) => {
@@ -41,13 +41,15 @@ export const W3 = (n, k, bigN) => {
 
 // power of 2 only
 export const getCommonW = () => {
-    Array.from({length: 5})
-    .map((_, i) => i + 1)
-    .map(e => {
-        const bigN = Math.pow(2, e);
+    const maxPower = 5;
+    Array.from({length: maxPower})
+    .map((_, i) => Math.pow(2, i + 1))
+    .map(bigN => {
         Array
-            .from({length: bigN})
-            .map((_, i) => `W${i}/${e} = ${W2(i)}`);
+        .from({length: bigN})
+        .forEach((_, nk) => {
+            console.log(`W${nk}/${bigN} = exp(-j * 2 * pi * ${nk}/${bigN}) = ${W2(nk, bigN)}`);
+        });
     });
 }
 
