@@ -9,7 +9,7 @@ export const DFT_Equation = array => {
             // console.log(`k = ${k}, ${(-1 * 2 * Math.PI * n * k) / array.length}, ${(-1 * 2 * n * k) / array.length}`)
             // complexNumber.setExponentialForm(signalValue, (-1 * 2 * Math.PI * n * k) / array.length);
 
-            complexNumber.setExponentialFormWithPI(signalValue, (-1 * 2 * n * k) / array.length);
+            complexNumber.setExponentialFormWithPI(signalValue, (-2 * n * k) / array.length);
             return p.add(complexNumber);
         }, new ComplexNumber());
     })
@@ -30,3 +30,25 @@ export const DFT = (array, sampleRate) => {
         return { amplitude, hz };
     });
 }
+
+export const W2 = (nk, bigN) => {
+    
+};
+
+export const W3 = (n, k, bigN) => {
+    return W2(n * k, bigN);
+}
+
+// power of 2 only
+export const getCommonW = () => {
+    Array.from({length: 5})
+    .map((_, i) => i + 1)
+    .map(e => {
+        const bigN = Math.pow(2, e);
+        Array
+            .from({length: bigN})
+            .map((_, i) => `W${i}/${e} = ${W2(i)}`);
+    });
+}
+
+
